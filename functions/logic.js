@@ -145,7 +145,7 @@ const purchaseShares = async (guessNo, guessType) => {
             {
                 channel: "h5",
                 channelId: "yes_no",
-                deviceCode: "a2c90ecf-6908-f1fc-5d6d-21f6d2414dff",
+                deviceCode: "bf3626a4-6360-beec-686e-7f748cd2d4ac",
                 guessNo: guessNo,
                 type: guessType,
                 // price: tradeInfo.price,
