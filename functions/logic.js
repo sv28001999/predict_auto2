@@ -117,7 +117,7 @@ const getEventDetail = async (eventNo) => {
         if (winGuess) {
             console.log(`[Event Detail] guessNo for "${winGuess.title}":`, winGuess.guessNo);
             await purchaseShares(winGuess.guessNo, 1);
-            await purchaseShares(winGuess.guessNo, 2);
+            // await purchaseShares(winGuess.guessNo, 2);
         } else {
             console.log(`[Event Detail] No "toss winner will bat or bowl" guess found for ${eventNo}`);
             await getEventDetail(eventNo);

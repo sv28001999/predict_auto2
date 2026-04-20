@@ -50,7 +50,6 @@ const startAuto = async (req, res, next) => {
         const id = setInterval(async () => {
             try {
                 await checkNewEvent();
-                // await startSelling();
                 // await checkBtcEvent();
             } catch (err) {
                 console.error("Error in checkNewEvent:", err.message);
