@@ -17,7 +17,7 @@ const HEADERS = {
 const FILE_PATH = path.join(__dirname, "events.json");
 
 const API_URL =
-    "https://api.predikapp.com/api/front/event/sports/upcoming?topicId=586&pageNum=1&pageSize=20&timeRange=upcoming";
+    "https://abc.predikapp.com/api/front/event/sports/upcoming?topicId=586&pageNum=1&pageSize=20&timeRange=upcoming";
 
 const getStoredEvents = () => {
     try {
@@ -98,7 +98,7 @@ const checkNewEvent = async () => {
 const getEventDetail = async (eventNo) => {
     try {
         const response = await axios.get(
-            `https://api.predikapp.com/api/front/event/sports-detail/${eventNo}`,
+            `https://abc.predikapp.com/api/front/event/sports-detail/${eventNo}`,
             {
                 headers: {
                     ...HEADERS,
@@ -141,7 +141,7 @@ const purchaseShares = async (guessNo, guessType) => {
         }
 
         const response = await axios.post(
-            "https://api.predikapp.com/api/front/guest/user/purchase-shares",
+            "https://abc.predikapp.com/api/front/guest/user/purchase-shares",
             {
                 channel: "h5",
                 channelId: "yes_no",

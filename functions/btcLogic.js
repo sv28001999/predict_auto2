@@ -16,8 +16,8 @@ const HEADERS = {
 
 const FILE_PATH = path.join(__dirname, "events.json");
 
-// const API_URL = "https://api.predikapp.com/api/front/event/crypto-detail/EV1775413800337D45E6D";
-const API_URL = "https://api.predikapp.com/api/front/event/sports-detail/EV1774560608740B5702C";
+const API_URL = "https://abc.predikapp.com/api/front/event/crypto-detail/EV1777746600828A20AE0";
+// const API_URL = "https://abc.predikapp.com/api/front/event/sports-detail/EV1774560608740B5702C";
 
 const getStoredEvents = () => {
     try {
@@ -62,7 +62,8 @@ const checkBtcEvent = async () => {
 
         const events = response?.data?.data?.guesses || [];
         const newTrades = events.filter((trade) =>
-            trade.title.includes("runs or more at the end of")
+            // trade.title.includes("runs or more at the end of")
+            trade.title.includes("BTC/USD Up or Down")
         );
         // console.log(newTrades);
 
@@ -90,10 +91,10 @@ const checkBtcEvent = async () => {
             // Call detail API for each new event
             for (const eventNo of newEvents) {
                 console.log(eventNo);
-                await purchaseShares(eventNo, 1, 2);
-                await purchaseShares(eventNo, 2, 2);
-                await purchaseShares(eventNo, 1, 1.5);
-                await purchaseShares(eventNo, 2, 1.5);
+                await purchaseShares(eventNo, 1, 0.5);
+                await purchaseShares(eventNo, 2, 0.5);
+                // await purchaseShares(eventNo, 1, 1.5);
+                // await purchaseShares(eventNo, 2, 1.5);
             }
         }
     } catch (error) {
@@ -111,7 +112,7 @@ const purchaseShares = async (guessNo, guessType, pr) => {
         }
 
         const response = await axios.post(
-            "https://api.predikapp.com/api/front/guest/user/purchase-shares",
+            "https://abc.predikapp.com/api/front/guest/user/purchase-shares",
             {
                 channel: "h5",
                 channelId: "yes_no",
@@ -120,9 +121,9 @@ const purchaseShares = async (guessNo, guessType, pr) => {
                 guessNo: guessNo,
                 type: guessType,
                 price: pr,
-                quantity: 30,
-                // price: tradeInfo.price,
-                // quantity: tradeInfo.quantity,
+                quantity: 2,
+                tpQuantity: 2,
+                tpTriggerPrice: pr + 0.5,
                 tradeType: 1,
                 versionCode: 999,
             },
@@ -169,7 +170,7 @@ const sellOrder = async (guessNo, price, quantity, type) => {
         console.log(guessNo, price, quantity, type);
 
         const response = await axios.post(
-            "https://api.predikapp.com/api/front/guest/user/sell-shares",
+            "https://abc.predikapp.com/api/front/guest/user/sell-shares",
             {
                 channel: "h5",
                 channelId: "yes_no",
@@ -210,7 +211,7 @@ const sellOrder = async (guessNo, price, quantity, type) => {
 const startSelling = async () => {
     try {
         const response = await axios.post(
-            "https://api.predikapp.com/api/front/guest/user/user-positions",
+            "https://abc.predikapp.com/api/front/guest/user/user-positions",
             {
                 channel: "h5",
                 channelId: "yes_no",
