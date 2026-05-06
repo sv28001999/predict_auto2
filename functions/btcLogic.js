@@ -16,7 +16,7 @@ const HEADERS = {
 
 const FILE_PATH = path.join(__dirname, "events.json");
 
-const API_URL = "https://abc.predikapp.com/api/front/event/crypto-detail/EV1777746600828A20AE0";
+const API_URL = "https://abc.predikapp.com/api/front/event/crypto-detail/EV1777919400710557F14";
 // const API_URL = "https://abc.predikapp.com/api/front/event/sports-detail/EV1774560608740B5702C";
 
 const getStoredEvents = () => {
@@ -91,8 +91,8 @@ const checkBtcEvent = async () => {
             // Call detail API for each new event
             for (const eventNo of newEvents) {
                 console.log(eventNo);
-                await purchaseShares(eventNo, 1, 0.5);
-                await purchaseShares(eventNo, 2, 0.5);
+                await purchaseShares(eventNo, 1, 5);
+                await purchaseShares(eventNo, 2, 5);
                 // await purchaseShares(eventNo, 1, 1.5);
                 // await purchaseShares(eventNo, 2, 1.5);
             }
@@ -121,9 +121,9 @@ const purchaseShares = async (guessNo, guessType, pr) => {
                 guessNo: guessNo,
                 type: guessType,
                 price: pr,
-                quantity: 2,
-                tpQuantity: 2,
-                tpTriggerPrice: pr + 0.5,
+                quantity: 10,
+                slQuantity: 10,
+                slTriggerPrice: 1.5,
                 tradeType: 1,
                 versionCode: 999,
             },
